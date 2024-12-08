@@ -1,15 +1,9 @@
-import math
-
+from services.line_generator import LineGenerator
 from services.plotting_service import PlottingService
-from entitys.pendilum_system import PendulumSystem
 
-pendulum = PendulumSystem()
+g = LineGenerator(11, 13, 9)
 plotter = PlottingService()
 
-for i in range(40000):
-    angle = math.sin(i/1000)
-    angle2 = pendulum.get_head_location()[0]
-    pendulum.set_locations_from_angle(angle)
-    plotter.add_point([angle2, angle])
+plotter._points = g.points
 
 plotter.show_plot()

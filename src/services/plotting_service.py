@@ -9,8 +9,9 @@ class PlottingService:
         self._points.append(point)
 
     def show_plot(self):
+        ax = plt.figure().add_subplot(projection='3d')
         xs = [cord[0] for cord in self._points]
         ys = [cord[1] for cord in self._points]
-        print(len(xs))
-        plt.plot(xs, ys)
+        zs = [cord[2] for cord in self._points]
+        ax.plot(xs, ys, zs)
         plt.show()
